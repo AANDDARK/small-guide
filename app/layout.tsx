@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +31,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="bg-stone-900 text-white p-4 flex items-center justify-between">
+        <Link href={'/'}><h1 className="text-3xl font-bold">SMALL-GUIDE</h1></Link>
+        <nav className="flex space-x-4">
+          <Link href={'/theme'}><Button className="bg-blue-500 px-4 py-2 rounded">All Guides</Button></Link>
+          <Link href={'/editor'}><Button className="bg-blue-500 px-4 py-2 rounded">Editor</Button></Link>
+          <Button className="bg-blue-500 px-4 py-2 rounded">Docs</Button>
+          <Input 
+            placeholder="search"
+          />
+        </nav>
+      </header>
         {children}
+        <footer className="bg-stone-900 text-white p-14 font-bold">
+        Creator of this site Andriy Kovalenko (AANDDARK on GitHub and email: andriyworkkovalenko@gmail.com)
+      </footer>
       </body>
     </html>
   );
